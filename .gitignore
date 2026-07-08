@@ -1,0 +1,9 @@
+node_modules/
+dist/
+runtime/
+data/mysql-data/
+
+.env
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,56 @@
+{
+  "name": "onerp",
+  "version": "1.0.0",
+  "description": "ONEERP Offline Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "keywords": [],
+  "author": "ONEERP",
+  "license": "ISC",
+  "type": "commonjs",
+  "build": {
+    "appId": "com.oneerp.offline",
+    "productName": "ONEERP Offline",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "app",
+        "to": "app"
+      },
+      {
+        "from": "runtime",
+        "to": "runtime"
+      },
+      {
+        "from": "data",
+        "to": "data"
+      },
+      {
+        "from": "sync",
+        "to": "sync"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.3"
+  }
+}
