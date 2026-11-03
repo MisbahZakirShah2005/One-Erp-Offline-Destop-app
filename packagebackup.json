@@ -1,0 +1,59 @@
+{
+  "name": "onerp",
+  "version": "1.0.15",
+  "description": "ONEERP Offline Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "predist": "node scripts/prepare-prerequisites.js && node scripts/verify-runtime.js"
+  },
+  "keywords": [],
+  "author": "ONEERP",
+  "license": "ISC",
+  "type": "commonjs",
+  "build": {
+    "appId": "com.oneerp.offline",
+    "productName": "ONEERP Offline",
+    "artifactName": "ONEERP-Offline-Setup-${version}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "scripts/verify-runtime.js"
+    ],
+    "extraResources": [
+      {
+        "from": "app",
+        "to": "app"
+      },
+      {
+        "from": "runtime",
+        "to": "runtime"
+      },
+      {
+        "from": "data",
+        "to": "data"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ONEERP Offline",
+      "perMachine": true,
+      "allowElevation": true,
+      "include": "build/installer.nsh"
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.3"
+  }
+}
